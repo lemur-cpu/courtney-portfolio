@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Courtney Quinn — Portfolio
 
-## Getting Started
+Personal portfolio site for Courtney Quinn, full-stack software engineer.
 
-First, run the development server:
+Built with Next.js, TypeScript, and CSS Modules. No Tailwind. No component libraries.
 
-```bash
+**Live site:** [courtneyquinn.dev](https://courtneyquinn.dev) ← update this once deployed
+
+## Stack
+
+- **Framework:** Next.js 14 (App Router)
+- **Language:** TypeScript
+- **Styling:** CSS Modules with CSS custom properties
+- **Animation:** Framer Motion
+- **Fonts:** Cormorant Garamond, DM Sans, Courier Prime
+- **Hosting:** GitHub Pages / Vercel
+
+## Project structure
+
+src/
+  app/                  — pages and routes
+    work/[slug]/        — case study pages
+    about/              — about page
+    resume/             — resume route handler
+  components/           — all UI components
+  styles/               — global styles and design tokens
+
+public/
+  images/               — project screenshots and headshot
+  resume.pdf            — resume (served via /resume route)
+
+## Running locally
+
+git clone https://github.com/lemur-cpu/courtney-portfolio.git
+cd courtney-portfolio
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Design
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Direction C from a planned design system: warm neutral palette, Cormorant Garamond display type, editorial grid, restrained motion. Light and dark mode supported.
 
-## Learn More
+Accent color: #C9857A  
+Background: #F2EEE8 (light) / #141412 (dark)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built by Courtney Quinn
