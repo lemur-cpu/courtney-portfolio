@@ -4,7 +4,7 @@ Personal portfolio site for Courtney Quinn, full-stack software engineer.
 
 Built with Next.js, TypeScript, and CSS Modules. No Tailwind. No component libraries.
 
-**Live site:** [courtney-portfolio.vercel.app](https://courtney-portfolio.vercel.app) ← update with your actual URL
+**Live site:** [courtney-portfolio-peach.vercel.app](https://courtney-portfolio-peach.vercel.app/)
 
 ---
 
