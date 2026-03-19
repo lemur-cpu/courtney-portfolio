@@ -1,0 +1,55 @@
+:root {
+  /* Colors */
+  --color-bg: #F2EEE8;
+  --color-text: #2C2C2A;
+  --color-accent: #C9857A;
+  --color-muted: #6B6864;
+  --color-border: #D9D5CE;
+  --color-surface: #EBE7E0;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'Courier Prime', 'Courier New', monospace;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+  --space-6: 64px;
+  --space-7: 96px;
+  --space-8: 144px;
+
+  /* Type scale */
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-3xl: 3rem;
+  --text-4xl: 4.5rem;
+  --text-5xl: 6rem;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --duration-fast: 200ms;
+  --duration-base: 400ms;
+  --duration-slow: 700ms;
+
+  /* Border radius */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+}
+
+[data-theme="dark"] {
+  --color-bg: #141412;
+  --color-text: #E8E4DC;
+  --color-accent: #D4927A;
+  --color-muted: #8A8882;
+  --color-border: #2A2A27;
+  --color-surface: #232320;
+}

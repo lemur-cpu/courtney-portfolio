@@ -1,0 +1,31 @@
+.toggle {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  border-radius: 12px;
+  background-color: var(--color-border);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color var(--duration-fast) ease;
+}
+
+.toggle[data-theme-active="true"] {
+  background-color: var(--color-accent);
+}
+
+.indicator {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--color-bg);
+  transition: transform var(--duration-fast) ease, background-color var(--duration-fast) ease;
+}
+
+.toggle[data-theme-active="true"] .indicator {
+  transform: translateX(20px);
+}

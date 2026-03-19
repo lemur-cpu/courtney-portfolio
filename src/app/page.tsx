@@ -1,66 +1,49 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Hero from "../components/Hero/Hero";
+import WorkSection from "../components/Work/WorkSection";
+import ProjectCard from "../components/Work/ProjectCard";
+import SkillsStrip from "../components/SkillsStrip/SkillsStrip";
+import AboutSnippet from "../components/About/AboutSnippet";
+import Footer from "../components/Footer/Footer";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <>
+      <Hero />
+      <WorkSection>
+        <ProjectCard
+          title="Wayfair — Project Shopping"
+          role="Software Engineer I"
+          year="2025–Present"
+          outcome="Full-stack feature development on a high-revenue B2C product."
+          href="/work/wayfair"
+          imageSrc="/images/MyProjects.png"
+          imageAlt="Wayfair My Projects feature"
         />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        <ProjectCard
+          title="Keystroke"
+          role="Solo / Personal"
+          year="2025–2026"
+          outcome="A browser-based writing tool built with no dependencies."
+          href="/work/keystroke"
+          imageSrc="/images/Keystroke.png"
+          imageAlt="Keystroke writing tool"
+          featured={true}
+          objectFit="contain"
+        />
+        <ProjectCard
+          title="AV Fuel & Energy Estimation"
+          role="Team Lead"
+          year="2025"
+          outcome="Energy consumption modeling across four vehicle types."
+          href="/work/capstone"
+          imageSrc="/images/Capstone.png"
+          imageAlt="AV Fuel and Energy Estimation app"
+          objectFit="contain"
+        />
+      </WorkSection>
+      <SkillsStrip />
+      <AboutSnippet />
+      <Footer />
+    </>
   );
 }
