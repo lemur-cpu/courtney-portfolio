@@ -4,47 +4,67 @@ Personal portfolio site for Courtney Quinn, full-stack software engineer.
 
 Built with Next.js, TypeScript, and CSS Modules. No Tailwind. No component libraries.
 
-**Live site:** [courtneyquinn.dev](https://courtneyquinn.dev) ← update this once deployed
+**Live site:** [courtney-portfolio.vercel.app](https://courtney-portfolio.vercel.app) ← update with your actual URL
+
+---
 
 ## Stack
 
-- **Framework:** Next.js 14 (App Router)
-- **Language:** TypeScript
-- **Styling:** CSS Modules with CSS custom properties
-- **Animation:** Framer Motion
-- **Fonts:** Cormorant Garamond, DM Sans, Courier Prime
-- **Hosting:** GitHub Pages / Vercel
+| | |
+|---|---|
+| **Framework** | Next.js 14 (App Router) |
+| **Language** | TypeScript |
+| **Styling** | CSS Modules + CSS custom properties |
+| **Animation** | Framer Motion |
+| **Fonts** | Cormorant Garamond, DM Sans, Courier Prime |
+| **Hosting** | Vercel |
 
-## Project structure
+---
 
+## Project Structure
+
+```
 src/
-  app/                  — pages and routes
-    work/[slug]/        — case study pages
-    about/              — about page
-    resume/             — resume route handler
-  components/           — all UI components
-  styles/               — global styles and design tokens
+├── app/
+│   ├── about/              # About page
+│   ├── resume/             # Resume route handler
+│   └── work/
+│       ├── wayfair/        # Wayfair case study
+│       ├── keystroke/      # Keystroke case study
+│       └── capstone/       # Capstone case study
+├── components/             # All UI components
+└── styles/                 # Global styles and design tokens
 
 public/
-  images/               — project screenshots and headshot
-  resume.pdf            — resume (served via /resume route)
+├── images/                 # Project screenshots and headshot
+└── resume.pdf              # Resume (served via /resume)
+```
 
-## Running locally
+---
 
+## Running Locally
+
+```bash
 git clone https://github.com/lemur-cpu/courtney-portfolio.git
 cd courtney-portfolio
 npm install
 npm run dev
+```
 
-Open localhost:3000.
-
-## Design
-
-Direction C from a planned design system: warm neutral palette, Cormorant Garamond display type, editorial grid, restrained motion. Light and dark mode supported.
-
-Accent color: #C9857A  
-Background: #F2EEE8 (light) / #141412 (dark)
+Open [localhost:3000](http://localhost:3000).
 
 ---
 
-Built by Courtney Quinn
+## Design
+
+Warm neutral palette, Cormorant Garamond display type, editorial grid, restrained motion. Light and dark mode supported.
+
+```
+Accent:     #C9857A
+Background: #F2EEE8  (light)
+Background: #141412  (dark)
+```
+
+---
+
+Built by [Courtney Quinn](https://github.com/lemur-cpu)
