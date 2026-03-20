@@ -196,23 +196,44 @@
 }
 
 .resumeCardPrompt {
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
-  color: var(--color-muted);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-xl);
+  font-weight: 400;
+  color: var(--color-text);
 }
 
 .resumeLink {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
+  letter-spacing: 0.08em;
   color: var(--color-muted);
-  border-bottom: 1px solid var(--color-border);
-  transition: color 200ms ease, border-color 200ms ease;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  padding: var(--space-2) var(--space-4);
+  border-radius: 99px;
+  cursor: pointer;
   white-space: nowrap;
+  transition: all 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.resumeLink::after {
+  content: " ↗";
+  opacity: 0;
+  transition: opacity 200ms ease 100ms;
 }
 
 .resumeLink:hover {
-  color: var(--color-accent);
+  background: var(--color-accent);
   border-color: var(--color-accent);
+  color: var(--color-bg);
+  letter-spacing: 0.12em;
+  padding-inline: var(--space-6);
+  transform: scale(1.04);
+}
+
+.resumeLink:hover::after {
+  opacity: 1;
 }
 
 /* Skills section on About page */
