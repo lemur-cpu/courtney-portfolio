@@ -9,9 +9,14 @@ export default function WorkSection({
   const indexedChildren = React.Children.map(children, (child, index) => {
     if (React.isValidElement(child)) {
       const num = String(index + 1).padStart(2, "0");
-      return React.cloneElement(
+      const indexedChild = React.cloneElement(
         child as React.ReactElement<{ index: number; number: string }>,
         { index, number: num }
+      );
+      return (
+        <div className={styles.cardWrapper}>
+          {indexedChild}
+        </div>
       );
     }
     return child;

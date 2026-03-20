@@ -195,29 +195,24 @@
   grid-column: 1 / -1;
 }
 
-.resumeCardLabel {
+.resumeCardPrompt {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.resumeLink {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: var(--color-muted);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.resumeButton {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  color: var(--color-text);
-  background: transparent;
-  border: 1px solid var(--color-border);
-  padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-sm);
-  transition: all 200ms ease;
+  border-bottom: 1px solid var(--color-border);
+  transition: color 200ms ease, border-color 200ms ease;
   white-space: nowrap;
 }
 
-.resumeButton:hover {
-  border-color: var(--color-muted);
+.resumeLink:hover {
   color: var(--color-accent);
+  border-color: var(--color-accent);
 }
 
 /* Skills section on About page */

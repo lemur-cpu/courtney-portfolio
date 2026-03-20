@@ -28,6 +28,10 @@ const SKILLS = [
     category: "TOOLS",
     items: ["Git", "Figma", "Datadog", "Cypress", "Playwright"],
   },
+  {
+    category: "MACHINE LEARNING",
+    items: ["Feature Engineering", "Model Evaluation"],
+  },
 ];
 
 export default function SkillsStrip() {

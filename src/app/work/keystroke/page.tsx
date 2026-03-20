@@ -65,14 +65,14 @@ export default function KeystrokePage() {
       <div className={styles.section}>
         <h2 className={styles.sectionTitle}>Technical decisions</h2>
         <p className={styles.body}>
-          I kept the architecture as flat as possible — one JS file per concern,
-          no build step, no bundler. The carriage indicator was the trickiest
-          part: it reads actual rendered character widths from a hidden ruler
-          element after fonts load, so the position tracks real pixels rather
-          than estimated ones. Sound is generated through the Web Audio API on
-          each keypress rather than playing audio files, which keeps the bundle
-          at zero bytes. Session replay works by logging each character with a
-          timestamp on input, then playing them back at the same intervals.
+          I kept the architecture flat: one JS file per concern, no build step,
+          no bundler. The trickiest part was the carriage indicator — it reads
+          actual rendered character widths from a hidden element after fonts
+          load, so the position tracks real pixels rather than estimates. Sound
+          comes from the Web Audio API on each keypress rather than audio files,
+          which keeps the bundle at zero. Session replay works by logging each
+          character with a timestamp, then playing them back at the same
+          intervals.
         </p>
       </div>
 

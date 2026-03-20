@@ -48,7 +48,8 @@ export default function Home() {
           href="/work/boston-logistics"
           imageSrc="/images/BostonLogisticsSimulator.png"
           imageAlt="Boston Logistics Simulator"
-          objectFit="cover"
+          objectFit="contain"
+          align="left"
         />
       </WorkSection>
       <SkillsStrip />

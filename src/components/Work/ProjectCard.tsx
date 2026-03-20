@@ -18,6 +18,7 @@ interface ProjectCardProps {
   featured?: boolean;
   index?: number;
   number?: string;
+  align?: "left" | "right";
 }
 
 const EASE = [0.77, 0, 0.175, 1] as const;
@@ -35,9 +36,14 @@ export default function ProjectCard({
   featured = false,
   index = 0,
   number,
+  align,
 }: ProjectCardProps) {
   const alignClass = featured
     ? styles.featuredCard
+    : align === "left"
+    ? styles.cardLeft
+    : align === "right"
+    ? styles.cardRight
     : index % 2 === 0
     ? styles.cardLeft
     : styles.cardRight;

@@ -53,6 +53,10 @@ const SKILLS = [
     category: "TOOLS",
     items: ["Git", "Figma", "Datadog", "Cypress", "Playwright"],
   },
+  {
+    category: "MACHINE LEARNING",
+    items: ["Feature Engineering", "Model Evaluation"],
+  },
 ];
 
 export default function AboutPageContent() {
@@ -118,14 +122,14 @@ export default function AboutPageContent() {
               </motion.div>
             ))}
             <motion.div className={styles.resumeCard} {...fadeUp(0.2, 12)}>
-              <span className={styles.resumeCardLabel}>Resume</span>
+              <span className={styles.resumeCardPrompt}>Want the full picture?</span>
               <a
                 href="/resume"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={styles.resumeButton}
+                className={styles.resumeLink}
               >
-                View Resume ↗
+                Open PDF ↗
               </a>
             </motion.div>
           </div>
