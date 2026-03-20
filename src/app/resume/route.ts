@@ -1,15 +1,23 @@
 import { NextResponse } from 'next/server'
-import { readFileSync } from 'fs'
-import { join } from 'path'
 
 export async function GET() {
-  const filePath = join(process.cwd(), 'public', 'resume.pdf')
-  const fileBuffer = readFileSync(filePath)
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resume — Courtney Quinn</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    iframe { width: 100%; height: 100%; border: none; display: block; }
+  </style>
+</head>
+<body>
+  <iframe src="/resume.pdf" title="Courtney Quinn Resume"></iframe>
+</body>
+</html>`
 
-  return new NextResponse(fileBuffer, {
-    headers: {
-      'Content-Type': 'application/pdf',
-      'Content-Disposition': 'inline; filename="Courtney-Quinn-Resume.pdf"',
-    },
+  return new NextResponse(html, {
+    headers: { 'Content-Type': 'text/html' },
   })
 }

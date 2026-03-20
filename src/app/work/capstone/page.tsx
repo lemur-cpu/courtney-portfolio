@@ -76,8 +76,8 @@ export default function CapstonePage() {
         <a href="/work/keystroke" className={styles.navLink}>
           ← Keystroke
         </a>
-        <a href="/#work" className={styles.navLink}>
-          ← Back to work
+        <a href="/work/boston-logistics" className={styles.navLink}>
+          Boston Logistics →
         </a>
       </nav>
     </CaseStudyLayout>

@@ -16,7 +16,7 @@ export default function KeystrokePage() {
         <p className={styles.label}>Personal Project · Design + Engineering</p>
         <h1 className={styles.title}>Keystroke</h1>
         <p className={styles.meta}>
-          Solo · 2025–2026 · Vanilla JavaScript, Web Audio API, CSS
+          Solo · 2026 · Vanilla JavaScript, Web Audio API, CSS
         </p>
         <a
           href="https://github.com/lemur-cpu/Keystroke"
@@ -65,13 +65,14 @@ export default function KeystrokePage() {
       <div className={styles.section}>
         <h2 className={styles.sectionTitle}>Technical decisions</h2>
         <p className={styles.body}>
-          No dependencies, no npm install. Deliberate. I wanted to prove the
-          browser is sufficient. The carriage position is calculated via a hidden
-          ruler span that measures actual character width post-
-          <code>document.fonts.ready</code>, mapped to a pixel offset. Web Audio
-          API generates all sounds synthetically. Session replay stores a{" "}
-          <code>{`{char, timestamp}`}</code> keylog and plays back at original
-          relative timing with a configurable speed multiplier.
+          I kept the architecture as flat as possible — one JS file per concern,
+          no build step, no bundler. The carriage indicator was the trickiest
+          part: it reads actual rendered character widths from a hidden ruler
+          element after fonts load, so the position tracks real pixels rather
+          than estimated ones. Sound is generated through the Web Audio API on
+          each keypress rather than playing audio files, which keeps the bundle
+          at zero bytes. Session replay works by logging each character with a
+          timestamp on input, then playing them back at the same intervals.
         </p>
       </div>
 

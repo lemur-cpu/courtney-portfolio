@@ -29,14 +29,7 @@
   font-size: 20px;
   font-weight: 600;
   color: var(--color-text);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 200ms ease;
-}
-
-.wordmarkVisible {
-  opacity: 1;
-  pointer-events: auto;
+  transition: opacity 300ms ease;
 }
 
 .right {
@@ -111,4 +104,62 @@
   .menuButton {
     display: block;
   }
+}
+
+/* Mobile overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-bg);
+  z-index: 150;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.overlayClose {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-5);
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--color-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color var(--duration-fast) ease;
+}
+
+.overlayClose:hover {
+  color: var(--color-text);
+}
+
+.overlayNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.overlayLink,
+.overlayButton {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 400;
+  color: var(--color-text);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color var(--duration-fast) ease;
+}
+
+.overlayLink:hover,
+.overlayButton:hover {
+  color: var(--color-accent);
 }

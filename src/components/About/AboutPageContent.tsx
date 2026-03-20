@@ -28,18 +28,36 @@ const NOW_CARDS = [
   { label: "OPEN TO", value: "Full-time roles & interesting projects" },
 ];
 
-const LINKS = [
-  { label: "GitHub ↗", href: "https://github.com/lemur-cpu", external: true },
+const SKILLS = [
   {
-    label: "LinkedIn ↗",
-    href: "https://www.linkedin.com/in/courtney-q/",
-    external: true,
+    category: "LANGUAGES",
+    items: ["TypeScript", "JavaScript", "Python", "Java", "C++"],
   },
-  { label: "Email", href: "mailto:courtney.quinn320@gmail.com", external: false },
-  { label: "Resume ↗", href: "/resume", external: true },
+  {
+    category: "FRONTEND",
+    items: ["React", "Next.js", "GraphQL (Apollo)", "HTML", "CSS"],
+  },
+  {
+    category: "BACKEND",
+    items: ["Node.js", "GraphQL APIs", "RESTful services"],
+  },
+  {
+    category: "DATABASES",
+    items: ["MySQL", "SQL", "Firebase"],
+  },
+  {
+    category: "CLOUD & DEVOPS",
+    items: ["AWS", "Docker", "Kubernetes", "CI/CD (Buildkite, Jenkins)"],
+  },
+  {
+    category: "TOOLS",
+    items: ["Git", "Figma", "Datadog", "Cypress", "Playwright"],
+  },
 ];
 
 export default function AboutPageContent() {
+  let skillIndex = 0;
+
   return (
     <>
       <div className={styles.wrapper}>
@@ -69,14 +87,14 @@ export default function AboutPageContent() {
           </motion.p>
           <motion.p className={styles.body} {...fadeUp(0.1)}>
             I studied Computer Science at Virginia Tech, graduating{" "}
-            <em>cum laude</em> in 2025. Before Wayfair I worked at the Naval
+            <em>cum laude</em> in 2025. Before Wayfair, I worked at the Naval
             Warfare Center and spent time as a Machine Learning fellow at Cornell
             Tech&rsquo;s Break Through Tech AI program.
           </motion.p>
           <motion.p className={styles.body} {...fadeUp(0.2)}>
             I care about the gap between a good design and a shipped one. Most
-            of my best technical decisions have been about what not to build —
-            keeping systems small, interfaces clear, and implementations honest.
+            of my best technical decisions have been about what not to build:
+            keeping systems small and interfaces clear.
           </motion.p>
         </div>
 
@@ -99,23 +117,43 @@ export default function AboutPageContent() {
                 <span className={styles.nowCardValue}>{value}</span>
               </motion.div>
             ))}
+            <motion.div className={styles.resumeCard} {...fadeUp(0.2, 12)}>
+              <span className={styles.resumeCardLabel}>Resume</span>
+              <a
+                href="/resume"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.resumeButton}
+              >
+                View Resume ↗
+              </a>
+            </motion.div>
           </div>
         </div>
 
-        <div className={styles.section}>
-          <motion.p className={styles.label} {...fadeUp(0)}>Elsewhere</motion.p>
-          <div className={styles.links}>
-            {LINKS.map(({ label, href, external }) => (
-              <a
-                key={label}
-                href={href}
-                className={styles.link}
-                {...(external
-                  ? { target: "_blank", rel: "noopener noreferrer" }
-                  : {})}
-              >
-                {label}
-              </a>
+        <div className={`${styles.section} ${styles.skillsSection}`}>
+          <motion.p className={styles.label} {...fadeUp(0)}>Skills</motion.p>
+          <div className={styles.skillsGrid}>
+            {SKILLS.map(({ category, items }) => (
+              <div key={category} className={styles.skillGroup}>
+                <p className={styles.skillCategory}>{category}</p>
+                {items.map((item) => {
+                  const delay = skillIndex * 0.03;
+                  skillIndex += 1;
+                  return (
+                    <motion.p
+                      key={item}
+                      className={styles.skillItem}
+                      initial={{ opacity: 0, x: -8 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, amount: 0.1 }}
+                      transition={{ duration: 0.3, ease: "easeOut", delay }}
+                    >
+                      {item}
+                    </motion.p>
+                  );
+                })}
+              </div>
             ))}
           </div>
         </div>

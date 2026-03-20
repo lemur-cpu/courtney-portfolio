@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import ContactModal from "../ContactModal/ContactModal";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
@@ -14,7 +15,8 @@ const NAV_LINKS = [
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
-  const [heroNameVisible, setHeroNameVisible] = useState(true);
+  const [showCQ, setShowCQ] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -25,17 +27,30 @@ export default function Nav() {
   }, []);
 
   useEffect(() => {
-    const el = document.getElementById("hero-name");
-    if (!el) {
-      setHeroNameVisible(false);
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const heroName = document.getElementById("hero-name");
+
+    if (!heroName) {
+      setShowCQ(true);
       return;
     }
 
     const observer = new IntersectionObserver(
-      ([entry]) => setHeroNameVisible(entry.isIntersecting),
-      { threshold: 0 }
+      ([entry]) => {
+        setShowCQ(!entry.isIntersecting);
+      },
+      { threshold: 0.1 }
     );
-    observer.observe(el);
+
+    observer.observe(heroName);
     return () => observer.disconnect();
   }, []);
 
@@ -45,7 +60,11 @@ export default function Nav() {
         <div className={styles.inner}>
           <Link
             href="/"
-            className={`${styles.wordmark} ${heroNameVisible ? "" : styles.wordmarkVisible}`}
+            className={styles.wordmark}
+            style={{
+              opacity: showCQ ? 1 : 0,
+              pointerEvents: showCQ ? "auto" : "none",
+            }}
           >
             CQ
           </Link>
@@ -66,11 +85,68 @@ export default function Nav() {
               </button>
             </nav>
           </div>
-          <button type="button" className={styles.menuButton} aria-label="Open navigation menu">
+          <button
+            type="button"
+            className={styles.menuButton}
+            aria-label="Open navigation menu"
+            onClick={() => setMenuOpen(true)}
+          >
             Menu
           </button>
         </div>
       </header>
+
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            className={styles.overlay}
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+          >
+            <button
+              type="button"
+              className={styles.overlayClose}
+              aria-label="Close menu"
+              onClick={() => setMenuOpen(false)}
+            >
+              ×
+            </button>
+            <nav className={styles.overlayNav}>
+              {NAV_LINKS.map(({ label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  className={styles.overlayLink}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {label}
+                </a>
+              ))}
+              <button
+                type="button"
+                className={styles.overlayButton}
+                onClick={() => {
+                  setMenuOpen(false);
+                  setIsContactOpen(true);
+                }}
+              >
+                Contact
+              </button>
+              <a
+                href="/resume"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.overlayLink}
+                onClick={() => setMenuOpen(false)}
+              >
+                Resume
+              </a>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <ContactModal
         isOpen={isContactOpen}

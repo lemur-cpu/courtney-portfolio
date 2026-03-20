@@ -22,7 +22,7 @@ export default function Home() {
         <ProjectCard
           title="Keystroke"
           role="Solo / Personal"
-          year="2025–2026"
+          year="2026"
           outcome="A browser-based writing tool built with no dependencies."
           href="/work/keystroke"
           imageSrc="/images/Keystroke.png"
@@ -39,6 +39,16 @@ export default function Home() {
           imageSrc="/images/Capstone.png"
           imageAlt="AV Fuel and Energy Estimation app"
           objectFit="contain"
+        />
+        <ProjectCard
+          title="Boston Logistics Simulator"
+          role="Solo"
+          year="2026"
+          outcome="AI-powered urban logistics simulation modeling grocery access equity across Boston."
+          href="/work/boston-logistics"
+          imageSrc="/images/BostonLogisticsSimulator.png"
+          imageAlt="Boston Logistics Simulator"
+          objectFit="cover"
         />
       </WorkSection>
       <SkillsStrip />
