@@ -129,7 +129,7 @@ export default function AboutPageContent() {
                 rel="noopener noreferrer"
                 className={styles.resumeLink}
               >
-                Open PDF ↗
+                View Resume
               </a>
             </motion.div>
           </div>
