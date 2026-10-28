@@ -13,7 +13,7 @@ export default function Home() {
         <ProjectCard
           title="Wayfair — Project Shopping"
           role="Software Engineer I"
-          year="2025–Present"
+          year="2025–2026"
           outcome="Full-stack feature development on a high-revenue B2C product."
           href="/work/wayfair"
           imageSrc="/images/MyProjects.png"

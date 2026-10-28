@@ -16,7 +16,7 @@ export default function WayfairPage() {
         <p className={styles.label}>Full-Stack · Production</p>
         <h1 className={styles.title}>Wayfair — Project Shopping</h1>
         <p className={styles.meta}>
-          Software Engineer I · 2025–Present · React, TypeScript, GraphQL,
+          Software Engineer I · Jul 2025–Jul 2026 · React, TypeScript, GraphQL,
           Node.js
         </p>
       </header>

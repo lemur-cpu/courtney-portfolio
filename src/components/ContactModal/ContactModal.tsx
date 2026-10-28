@@ -64,8 +64,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
             <h2 className={styles.heading}>Get in touch</h2>
             <p className={styles.subtext}>
-              I&rsquo;m open to full-time roles, freelance projects, and
-              interesting conversations.
+              I&rsquo;m open to interesting projects, collaborations, and
+              conversations.
             </p>
 
             <div className={styles.emailRow}>

@@ -23,8 +23,8 @@ export default function AboutSnippet() {
             caring about the schema and the spacing equally.
           </p>
           <p className={styles.body}>
-            Currently a full-stack engineer at Wayfair. Previously Virginia Tech
-            CS, <em>cum laude</em>.
+            Currently an AI software engineer at Autonomous Cyber. Previously
+            Wayfair and Virginia Tech CS, <em>cum laude</em>.
           </p>
           <a href="/about" className={styles.more}>
             More about me →

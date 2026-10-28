@@ -33,10 +33,10 @@ export default function Hero() {
         </h1>
         <div className={styles.sublines}>
           <motion.div className={styles.subline} {...clipVariant(0.5)}>
-            Full-stack software engineer.
+            AI software engineer.
           </motion.div>
           <motion.div className={styles.subline} {...clipVariant(0.65)}>
-            Currently building at Wayfair in Boston.
+            Currently building at Autonomous Cyber.
           </motion.div>
         </div>
       </div>

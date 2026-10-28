@@ -22,10 +22,10 @@ const fadeLeft = (delay: number) => ({
 });
 
 const NOW_CARDS = [
-  { label: "ROLE", value: "Software Engineer I at Wayfair" },
+  { label: "ROLE", value: "AI Software Engineer at Autonomous Cyber" },
   { label: "BUILDING", value: "Keystroke — browser-based writing tool" },
-  { label: "LOCATION", value: "Boston, MA" },
-  { label: "OPEN TO", value: "Full-time roles & interesting projects" },
+  { label: "LOCATION", value: "Denver, CO" },
+  { label: "OPEN TO", value: "Interesting projects & collaborations" },
 ];
 
 const SKILLS = [
@@ -69,7 +69,7 @@ export default function AboutPageContent() {
           <div className={styles.headerText}>
             <h1 className={styles.heading}>About</h1>
             <p className={styles.subheading}>
-              Courtney Quinn · Full-stack engineer
+              Courtney Quinn · AI software engineer
             </p>
           </div>
           <div className={styles.headshot}>
@@ -84,10 +84,9 @@ export default function AboutPageContent() {
 
         <div className={styles.bio}>
           <motion.p className={styles.body} {...fadeUp(0)}>
-            I&rsquo;m a full-stack software engineer at Wayfair, working on the
-            Project Shopping team. My work spans GraphQL schema design, Node.js
-            backend services, and React frontend, end-to-end. It&rsquo;s how I
-            prefer it.
+            I&rsquo;m an AI software engineer at Autonomous Cyber. Before that I
+            was a full-stack engineer at Wayfair on the Project Shopping team,
+            owning features end-to-end across GraphQL, Node.js, and React.
           </motion.p>
           <motion.p className={styles.body} {...fadeUp(0.1)}>
             I studied Computer Science at Virginia Tech, graduating{" "}

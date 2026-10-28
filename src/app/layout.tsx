@@ -27,7 +27,7 @@ const courierPrime = Courier_Prime({
 
 export const metadata: Metadata = {
   title: "Courtney Quinn",
-  description: "Full-stack engineer with a design background.",
+  description: "AI software engineer with a design background.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
