@@ -81,6 +81,11 @@
   color: var(--color-text);
 }
 
+.body em {
+  /* Italic glyphs overhang; keep following words from looking stuck on */
+  padding-inline-end: 0.12em;
+}
+
 /* Pull quote */
 .pullQuote {
   margin-top: var(--space-6);

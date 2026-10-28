@@ -39,7 +39,16 @@ const SKILLS = [
   },
   {
     category: "BACKEND",
-    items: ["Node.js", "GraphQL APIs", "RESTful services"],
+    items: ["Node.js", "GraphQL APIs", "RESTful services", "MCP"],
+  },
+  {
+    category: "AI & AGENTS",
+    items: [
+      "LLM agents",
+      "Local / on-device models",
+      "Model routing & eval",
+      "Speech (ASR)",
+    ],
   },
   {
     category: "DATABASES",
@@ -47,15 +56,21 @@ const SKILLS = [
   },
   {
     category: "CLOUD & DEVOPS",
-    items: ["AWS", "Docker", "Kubernetes", "CI/CD (Buildkite, Jenkins)"],
+    items: [
+      "AWS",
+      "Docker",
+      "Kubernetes",
+      "SSH / WinRM",
+      "CI/CD (Buildkite, Jenkins)",
+    ],
   },
   {
     category: "TOOLS",
-    items: ["Git", "Figma", "Datadog", "Cypress", "Playwright"],
+    items: ["Git", "Figma", "Datadog", "Cypress", "Playwright", "VS Code APIs"],
   },
   {
     category: "MACHINE LEARNING",
-    items: ["Feature Engineering", "Model Evaluation"],
+    items: ["Feature Engineering", "Model Evaluation", "XGBoost", "SHAP"],
   },
 ];
 
@@ -90,7 +105,9 @@ export default function AboutPageContent() {
           </motion.p>
           <motion.p className={styles.body} {...fadeUp(0.1)}>
             I studied Computer Science at Virginia Tech, graduating{" "}
-            <em>cum laude</em> in 2025. Before Wayfair, I worked at the Naval
+            <em>cum laude</em>
+            {" "}
+            in 2025. Before Wayfair, I worked at the Naval
             Warfare Center and spent time as a Machine Learning fellow at Cornell
             Tech&rsquo;s Break Through Tech AI program.
           </motion.p>

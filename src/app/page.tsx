@@ -11,6 +11,15 @@ export default function Home() {
       <Hero />
       <WorkSection>
         <ProjectCard
+          title="Autonomous Cyber"
+          role="AI Software Engineer"
+          year="2026–Present"
+          outcome="Offensive cyber platform — desktop agent product for security operators."
+          imageSrc="/images/fuzz-e.png"
+          imageAlt="FUZZ-E — Autonomous Cyber product"
+          objectFit="contain"
+        />
+        <ProjectCard
           title="Wayfair — Project Shopping"
           role="Software Engineer I"
           year="2025–2026"
