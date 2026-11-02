@@ -4,7 +4,7 @@ Personal portfolio site for Courtney Quinn, full-stack software engineer.
 
 Built with Next.js, TypeScript, and CSS Modules. No Tailwind. No component libraries.
 
-**Live site:** [courtneyquinn.dev](https://courtneyquinn.dev/))
+**Live site:** [courtneyquinn.dev](https://courtneyquinn.dev/)
 
 ---
 
@@ -12,11 +12,11 @@ Built with Next.js, TypeScript, and CSS Modules. No Tailwind. No component libra
 
 | | |
 |---|---|
-| **Framework** | Next.js 14 (App Router) |
+| **Framework** | Next.js 16 (App Router) |
 | **Language** | TypeScript |
 | **Styling** | CSS Modules + CSS custom properties |
 | **Animation** | Framer Motion |
-| **Fonts** | Cormorant Garamond, DM Sans, Courier Prime |
+| **Fonts** | Instrument Serif, DM Sans, Courier Prime |
 | **Hosting** | Vercel |
 
 ---
@@ -57,13 +57,15 @@ Open [localhost:3000](http://localhost:3000).
 
 ## Design
 
-Warm neutral palette, Cormorant Garamond display type, editorial grid, restrained motion. Light and dark mode supported.
+Cool ink editorial system: cool paper background, Instrument Serif display type, teal accent used structurally. Editorial grid, restrained motion. Light and dark mode supported.
 
 ```
-Accent:     #C9857A
-Background: #F2EEE8  (light)
-Background: #141412  (dark)
+Accent:     #1F6F6A
+Background: #EEF0F2  (light)
+Background: #121416  (dark)
 ```
+
+Ruling: cream / terracotta / Cormorant Garamond is retired. See `docs/agents/specs/2026-11-01-cool-ink-visual-system.md`.
 
 ---
 

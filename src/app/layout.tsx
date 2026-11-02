@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import { Cormorant_Garamond, DM_Sans, Courier_Prime } from "next/font/google";
+import { Instrument_Serif, DM_Sans, Courier_Prime } from "next/font/google";
 import Nav from "../components/Nav/Nav";
 import PageTransition from "../components/PageTransition/PageTransition";
 import ThemeProvider from "../components/ThemeToggle/ThemeProvider";
+import ContactProvider from "../components/ContactModal/ContactProvider";
 import "../styles/globals.css";
 
-const cormorantGaramond = Cormorant_Garamond({
+const instrumentSerif = Instrument_Serif({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "600"],
+  weight: ["400"],
   style: ["normal", "italic"],
 });
 
@@ -42,13 +43,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorantGaramond.variable} ${dmSans.variable} ${courierPrime.variable}`}
+      className={`${instrumentSerif.variable} ${dmSans.variable} ${courierPrime.variable}`}
       suppressHydrationWarning
     >
       <body>
         <ThemeProvider>
-          <Nav />
-          <PageTransition>{children}</PageTransition>
+          <ContactProvider>
+            <Nav />
+            <PageTransition>{children}</PageTransition>
+          </ContactProvider>
         </ThemeProvider>
         <Analytics />
       </body>

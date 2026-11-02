@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { Check, Copy, ExternalLink, X } from "lucide-react";
 import styles from "./ContactModal.module.css";
 
 const EMAIL = "courtney.quinn320@gmail.com";
@@ -13,8 +14,8 @@ interface ContactModalProps {
 
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [copied, setCopied] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
-  // Close on Escape
   useEffect(() => {
     if (!isOpen) return;
     const onKey = (e: KeyboardEvent) => {
@@ -30,16 +31,36 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     setTimeout(() => setCopied(false), 2000);
   }
 
+  const fade = prefersReducedMotion
+    ? {
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        exit: { opacity: 0 },
+        transition: { duration: 0.01 },
+      }
+    : {
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        exit: { opacity: 0 },
+        transition: { duration: 0.2 },
+      };
+
+  const panelMotion = prefersReducedMotion
+    ? fade
+    : {
+        initial: { opacity: 0, y: -12, scale: 0.97 },
+        animate: { opacity: 1, y: 0, scale: 1 },
+        exit: { opacity: 0, y: -8, scale: 0.97 },
+        transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] as const },
+      };
+
   return (
     <AnimatePresence>
       {isOpen && (
         <>
           <motion.div
             className={styles.backdrop}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            {...fade}
             onClick={onClose}
             aria-hidden="true"
           />
@@ -48,10 +69,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             role="dialog"
             aria-modal="true"
             aria-label="Contact"
-            initial={{ opacity: 0, y: -12, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.97 }}
-            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            {...panelMotion}
           >
             <button
               type="button"
@@ -59,7 +77,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               onClick={onClose}
               aria-label="Close contact modal"
             >
-              ×
+              <X size={18} strokeWidth={1.75} />
             </button>
 
             <h2 className={styles.heading}>Get in touch</h2>
@@ -75,7 +93,17 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 className={styles.copyButton}
                 onClick={handleCopy}
               >
-                {copied ? "Copied ✓" : "Copy"}
+                {copied ? (
+                  <>
+                    <Check size={14} strokeWidth={1.75} aria-hidden />
+                    Copied
+                  </>
+                ) : (
+                  <>
+                    <Copy size={14} strokeWidth={1.75} aria-hidden />
+                    Copy
+                  </>
+                )}
               </button>
             </div>
 
@@ -88,7 +116,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                LinkedIn ↗
+                LinkedIn
+                <ExternalLink size={14} strokeWidth={1.75} aria-hidden />
               </a>
               <a
                 href="https://github.com/lemur-cpu"
@@ -96,7 +125,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                GitHub ↗
+                GitHub
+                <ExternalLink size={14} strokeWidth={1.75} aria-hidden />
               </a>
             </div>
           </motion.div>

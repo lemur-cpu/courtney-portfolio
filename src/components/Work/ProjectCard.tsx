@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import styles from "./ProjectCard.module.css";
 
 interface ProjectCardProps {
@@ -20,8 +20,6 @@ interface ProjectCardProps {
   number?: string;
   align?: "left" | "right";
 }
-
-const EASE = [0.77, 0, 0.175, 1] as const;
 
 export default function ProjectCard({
   title,
@@ -41,22 +39,26 @@ export default function ProjectCard({
   const alignClass = featured
     ? styles.featuredCard
     : align === "left"
-    ? styles.cardLeft
-    : align === "right"
-    ? styles.cardRight
-    : index % 2 === 0
-    ? styles.cardLeft
-    : styles.cardRight;
+      ? styles.cardLeft
+      : align === "right"
+        ? styles.cardRight
+        : index % 2 === 0
+          ? styles.cardLeft
+          : styles.cardRight;
 
   const body = (
     <>
-      <div className={`${styles.thumbnail} ${featured ? styles.featuredThumbnail : ""}`}>
-        <div className={styles.chrome} aria-hidden="true">
-          <div className={styles.dot} style={{ backgroundColor: "#EC6A5E" }} />
-          <div className={styles.dot} style={{ backgroundColor: "#F4BE4F" }} />
-          <div className={styles.dot} style={{ backgroundColor: "#61C554" }} />
-        </div>
-        <div className={`${styles.imageArea} ${featured ? styles.featuredImageArea : ""}`}>
+      <div
+        className={`${styles.thumbnail} ${featured ? styles.featuredThumbnail : ""}`}
+      >
+        {number && (
+          <span className={styles.numberBadge} aria-hidden="true">
+            {number}
+          </span>
+        )}
+        <div
+          className={`${styles.imageArea} ${featured ? styles.featuredImageArea : ""}`}
+        >
           {imageSrc && (
             <Image
               src={imageSrc}
@@ -67,7 +69,9 @@ export default function ProjectCard({
               style={{
                 ...(objectFit ? { objectFit } : {}),
                 objectPosition:
-                  objectFit === "contain" ? "center" : (imagePosition ?? undefined),
+                  objectFit === "contain"
+                    ? "center"
+                    : (imagePosition ?? undefined),
               }}
             />
           )}
@@ -79,15 +83,21 @@ export default function ProjectCard({
         <p className={styles.meta}>
           {role} · {year}
         </p>
-        {number && <p className={styles.number}>{number}</p>}
-        <h3 className={`${styles.title} ${featured ? styles.featuredTitle : ""}`}>
+        <h3
+          className={`${styles.title} ${featured ? styles.featuredTitle : ""}`}
+        >
           {title}
         </h3>
         <p className={styles.outcome}>{outcome}</p>
         {href && (
           <span className={styles.cta}>
-            <span className={styles.linkText}>Case study</span>{" "}
-            <span className={styles.arrow}>→</span>
+            <span className={styles.linkText}>Case study</span>
+            <ArrowUpRight
+              className={styles.arrow}
+              aria-hidden
+              size={16}
+              strokeWidth={1.75}
+            />
           </span>
         )}
       </div>
@@ -95,12 +105,8 @@ export default function ProjectCard({
   );
 
   return (
-    <motion.article
+    <article
       className={`${styles.card} ${alignClass} ${href ? "" : styles.cardStatic}`}
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, ease: EASE }}
     >
       {href ? (
         <Link
@@ -114,6 +120,6 @@ export default function ProjectCard({
           {body}
         </div>
       )}
-    </motion.article>
+    </article>
   );
 }
