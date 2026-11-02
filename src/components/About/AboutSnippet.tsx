@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import styles from "./AboutSnippet.module.css";
 
 export default function AboutSnippet() {
@@ -29,7 +30,8 @@ export default function AboutSnippet() {
             Wayfair and Virginia Tech CS, <em>cum laude</em>.
           </p>
           <a href="/about" className={styles.more}>
-            More about me →
+            More about me
+            <ArrowRight aria-hidden size={14} strokeWidth={1.75} />
           </a>
         </div>
 

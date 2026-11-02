@@ -1,10 +1,11 @@
+import { ExternalLink } from "lucide-react";
 import styles from "./Footer.module.css";
 
 const LINKS = [
   { label: "Email", href: "mailto:courtney.quinn320@gmail.com", external: false },
   { label: "GitHub", href: "https://github.com/lemur-cpu", external: true },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/courtney-q/", external: true },
-  { label: "Resume ↗", href: "/resume", external: false },
+  { label: "Resume", href: "/resume", external: true },
 ];
 
 export default function Footer() {
@@ -23,6 +24,9 @@ export default function Footer() {
                 : {})}
             >
               {label}
+              {external && (
+                <ExternalLink size={12} strokeWidth={1.75} aria-hidden />
+              )}
             </a>
           ))}
         </nav>

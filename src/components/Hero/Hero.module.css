@@ -1,4 +1,7 @@
 .section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   min-height: calc(100dvh - 64px);
   display: flex;
   flex-direction: column;
@@ -6,25 +9,71 @@
   padding-top: var(--space-6);
   padding-bottom: var(--space-6);
   background: linear-gradient(
-    180deg,
+    165deg,
     var(--color-bg) 0%,
-    color-mix(in srgb, var(--color-surface) 55%, var(--color-bg)) 100%
+    color-mix(in srgb, var(--color-surface) 70%, var(--color-bg)) 48%,
+    color-mix(in srgb, var(--color-accent) 8%, var(--color-bg)) 100%
   );
 }
 
+.atmosphereWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.atmosphere {
+  position: absolute;
+  inset: 0;
+}
+
+.atmosphereSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.atmosphereGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--color-border) 55%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--color-border) 55%, transparent) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 70% 60% at 70% 40%, black 0%, transparent 75%);
+  opacity: 0.45;
+}
+
 .inner {
+  position: relative;
+  z-index: 1;
   max-width: 1200px;
   width: 100%;
   margin-inline: auto;
   padding-inline: var(--space-5);
+  border-left: 2px solid var(--color-accent);
+  padding-left: calc(var(--space-5) + 2px);
+  margin-left: max(0px, calc((100% - 1200px) / 2));
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-3);
 }
 
 .name {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-size: clamp(2.75rem, 9vw, 6.5rem);
   font-weight: 400;
   color: var(--color-text);
-  line-height: 1.1;
+  line-height: 1.05;
+  max-width: 12ch;
 }
 
 .wordWrap {
@@ -41,7 +90,7 @@
 }
 
 .sublines {
-  margin-top: var(--space-3);
+  margin-top: var(--space-4);
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
@@ -53,6 +102,7 @@
   font-size: var(--text-sm);
   color: var(--color-muted);
   letter-spacing: 0.02em;
+  line-height: 1.5;
 }
 
 .ctaGroup {
@@ -64,6 +114,9 @@
 }
 
 .ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   letter-spacing: 0.08em;
@@ -75,16 +128,21 @@
   padding: var(--space-2) var(--space-4);
   transition: background var(--duration-fast) ease,
     border-color var(--duration-fast) ease,
-    color var(--duration-fast) ease;
+    color var(--duration-fast) ease,
+    transform var(--duration-fast) var(--ease-out);
 }
 
 .ctaPrimary:hover {
   background: var(--color-text);
   border-color: var(--color-text);
   color: var(--color-bg);
+  transform: translateY(-1px);
 }
 
 .ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   letter-spacing: 0.08em;
@@ -103,4 +161,26 @@
 .ctaSecondary:hover {
   color: var(--color-text);
   border-bottom-color: var(--color-text);
+}
+
+.ctaIcon {
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .inner {
+    border-left: none;
+    padding-left: var(--space-5);
+    margin-left: auto;
+  }
+
+  .name {
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ctaPrimary:hover {
+    transform: none;
+  }
 }

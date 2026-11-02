@@ -24,5 +24,7 @@ Accent is structural (focus rings, rules, CTA underlines) — not a filled “CT
 - CSS Modules + tokens only. No Tailwind / UI kits.
 - Default: no decorative cards. Work items are flat (type + image + hairlines).
 - No macOS traffic-light chrome on screenshots.
-- Motion budget: hero clip-path reveal + one work-section entrance + functional modal/nav motion. Honor `prefers-reduced-motion`.
+- Motion budget: hero clip-path reveal + atmosphere fade + one work-section entrance + functional modal/nav motion. Honor `prefers-reduced-motion`.
 - Home: Hero → Selected Work → About snippet → Footer. Skills live on About only.
+- Atmosphere: Haikei-style SVG waves/grid in brand teal (not purple blobs). Icons via `lucide-react`, not emoji.
+- Agent skill: follow `ui-components` skill (anti-vibe toolkit + composition hard rules) when polishing UI.

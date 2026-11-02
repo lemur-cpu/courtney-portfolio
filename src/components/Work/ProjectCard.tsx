@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import styles from "./ProjectCard.module.css";
 
 interface ProjectCardProps {
@@ -50,6 +51,11 @@ export default function ProjectCard({
       <div
         className={`${styles.thumbnail} ${featured ? styles.featuredThumbnail : ""}`}
       >
+        {number && (
+          <span className={styles.numberBadge} aria-hidden="true">
+            {number}
+          </span>
+        )}
         <div
           className={`${styles.imageArea} ${featured ? styles.featuredImageArea : ""}`}
         >
@@ -77,7 +83,6 @@ export default function ProjectCard({
         <p className={styles.meta}>
           {role} · {year}
         </p>
-        {number && <p className={styles.number}>{number}</p>}
         <h3
           className={`${styles.title} ${featured ? styles.featuredTitle : ""}`}
         >
@@ -86,8 +91,13 @@ export default function ProjectCard({
         <p className={styles.outcome}>{outcome}</p>
         {href && (
           <span className={styles.cta}>
-            <span className={styles.linkText}>Case study</span>{" "}
-            <span className={styles.arrow}>→</span>
+            <span className={styles.linkText}>Case study</span>
+            <ArrowUpRight
+              className={styles.arrow}
+              aria-hidden
+              size={16}
+              strokeWidth={1.75}
+            />
           </span>
         )}
       </div>

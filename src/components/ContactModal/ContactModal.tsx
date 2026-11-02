@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { Check, Copy, ExternalLink, X } from "lucide-react";
 import styles from "./ContactModal.module.css";
 
 const EMAIL = "courtney.quinn320@gmail.com";
@@ -15,7 +16,6 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [copied, setCopied] = useState(false);
   const prefersReducedMotion = useReducedMotion();
 
-  // Close on Escape
   useEffect(() => {
     if (!isOpen) return;
     const onKey = (e: KeyboardEvent) => {
@@ -77,7 +77,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               onClick={onClose}
               aria-label="Close contact modal"
             >
-              ×
+              <X size={18} strokeWidth={1.75} />
             </button>
 
             <h2 className={styles.heading}>Get in touch</h2>
@@ -93,7 +93,17 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 className={styles.copyButton}
                 onClick={handleCopy}
               >
-                {copied ? "Copied ✓" : "Copy"}
+                {copied ? (
+                  <>
+                    <Check size={14} strokeWidth={1.75} aria-hidden />
+                    Copied
+                  </>
+                ) : (
+                  <>
+                    <Copy size={14} strokeWidth={1.75} aria-hidden />
+                    Copy
+                  </>
+                )}
               </button>
             </div>
 
@@ -106,7 +116,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                LinkedIn ↗
+                LinkedIn
+                <ExternalLink size={14} strokeWidth={1.75} aria-hidden />
               </a>
               <a
                 href="https://github.com/lemur-cpu"
@@ -114,7 +125,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                GitHub ↗
+                GitHub
+                <ExternalLink size={14} strokeWidth={1.75} aria-hidden />
               </a>
             </div>
           </motion.div>
