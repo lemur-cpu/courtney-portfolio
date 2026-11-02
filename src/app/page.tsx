@@ -1,7 +1,6 @@
 import Hero from "../components/Hero/Hero";
 import WorkSection from "../components/Work/WorkSection";
 import ProjectCard from "../components/Work/ProjectCard";
-import SkillsStrip from "../components/SkillsStrip/SkillsStrip";
 import AboutSnippet from "../components/About/AboutSnippet";
 import Footer from "../components/Footer/Footer";
 
@@ -61,7 +60,6 @@ export default function Home() {
           align="left"
         />
       </WorkSection>
-      <SkillsStrip />
       <AboutSnippet />
       <Footer />
     </>

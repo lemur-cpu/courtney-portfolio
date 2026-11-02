@@ -1,48 +1,32 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Footer from "../Footer/Footer";
 import styles from "./AboutPage.module.css";
 
-const EASE = [0.77, 0, 0.175, 1] as const;
-
-const fadeUp = (delay: number, y = 16, duration = 0.4) => ({
-  initial: { opacity: 0, y },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.1 as const },
-  transition: { duration, ease: EASE, delay },
-});
-
-const fadeLeft = (delay: number) => ({
-  initial: { opacity: 0, x: -16 },
-  whileInView: { opacity: 1, x: 0 },
-  viewport: { once: true, amount: 0.1 as const },
-  transition: { duration: 0.5, ease: EASE, delay },
-});
-
-const NOW_CARDS = [
-  { label: "ROLE", value: "AI Software Engineer at Autonomous Cyber" },
-  { label: "BUILDING", value: "Keystroke — browser-based writing tool" },
-  { label: "LOCATION", value: "Denver, CO" },
-  { label: "OPEN TO", value: "Interesting projects & collaborations" },
+const NOW_ITEMS = [
+  { label: "Role", value: "AI Software Engineer at Autonomous Cyber" },
+  { label: "Building", value: "Keystroke — browser-based writing tool" },
+  { label: "Location", value: "Denver, CO" },
+  { label: "Open to", value: "Interesting projects & collaborations" },
 ];
 
 const SKILLS = [
   {
-    category: "LANGUAGES",
+    category: "Languages",
     items: ["TypeScript", "JavaScript", "Python", "Java", "C++"],
   },
   {
-    category: "FRONTEND",
+    category: "Frontend",
     items: ["React", "Next.js", "GraphQL (Apollo)", "HTML", "CSS"],
   },
   {
-    category: "BACKEND",
+    category: "Backend",
     items: ["Node.js", "GraphQL APIs", "RESTful services", "MCP"],
   },
   {
-    category: "AI & AGENTS",
+    category: "AI & Agents",
     items: [
       "LLM agents",
       "Local / on-device models",
@@ -51,11 +35,11 @@ const SKILLS = [
     ],
   },
   {
-    category: "DATABASES",
+    category: "Databases",
     items: ["MySQL", "SQL", "Firebase"],
   },
   {
-    category: "CLOUD & DEVOPS",
+    category: "Cloud & DevOps",
     items: [
       "AWS",
       "Docker",
@@ -65,22 +49,31 @@ const SKILLS = [
     ],
   },
   {
-    category: "TOOLS",
+    category: "Tools",
     items: ["Git", "Figma", "Datadog", "Cypress", "Playwright", "VS Code APIs"],
   },
   {
-    category: "MACHINE LEARNING",
+    category: "Machine Learning",
     items: ["Feature Engineering", "Model Evaluation", "XGBoost", "SHAP"],
   },
 ];
 
 export default function AboutPageContent() {
-  let skillIndex = 0;
+  const prefersReducedMotion = useReducedMotion();
+
+  const sectionMotion = prefersReducedMotion
+    ? {}
+    : {
+        initial: { opacity: 0, y: 12 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, amount: 0.15 as const },
+        transition: { duration: 0.4, ease: [0.77, 0, 0.175, 1] as const },
+      };
 
   return (
     <>
       <div className={styles.wrapper}>
-        <motion.header className={styles.header} {...fadeUp(0, 20, 0.5)}>
+        <motion.header className={styles.header} {...sectionMotion}>
           <div className={styles.headerText}>
             <h1 className={styles.heading}>About</h1>
             <p className={styles.subheading}>
@@ -97,86 +90,74 @@ export default function AboutPageContent() {
           </div>
         </motion.header>
 
-        <div className={styles.bio}>
-          <motion.p className={styles.body} {...fadeUp(0)}>
+        <motion.div className={styles.bio} {...sectionMotion}>
+          <p className={styles.body}>
             I&rsquo;m an AI software engineer at Autonomous Cyber. Before that I
             was a full-stack engineer at Wayfair on the Project Shopping team,
             owning features end-to-end across GraphQL, Node.js, and React.
-          </motion.p>
-          <motion.p className={styles.body} {...fadeUp(0.1)}>
+          </p>
+          <p className={styles.body}>
             I studied Computer Science at Virginia Tech, graduating{" "}
-            <em>cum laude</em>
-            {" "}
-            in 2025. Before Wayfair, I worked at the Naval
+            <em>cum laude</em> in 2025. Before Wayfair, I worked at the Naval
             Warfare Center and spent time as a Machine Learning fellow at Cornell
             Tech&rsquo;s Break Through Tech AI program.
-          </motion.p>
-          <motion.p className={styles.body} {...fadeUp(0.2)}>
-            I care about the gap between a good design and a shipped one. Most
-            of my best technical decisions have been about what not to build:
-            keeping systems small and interfaces clear.
-          </motion.p>
-        </div>
+          </p>
+          <p className={styles.body}>
+            I care about the gap between a good design and a shipped one. Most of
+            my best technical decisions have been about what not to build: keeping
+            systems small and interfaces clear.
+          </p>
+        </motion.div>
 
-        <motion.div className={styles.pullQuote} {...fadeLeft(0)}>
+        <motion.div className={styles.pullQuote} {...sectionMotion}>
           <p className={styles.pullQuoteText}>
             Writing and building are the same thing in different materials.
           </p>
         </motion.div>
 
-        <div className={styles.section}>
-          <motion.p className={styles.label} {...fadeUp(0)}>Now</motion.p>
-          <div className={styles.nowGrid}>
-            {NOW_CARDS.map(({ label, value }, i) => (
-              <motion.div
-                key={label}
-                className={styles.nowCard}
-                {...fadeUp(i * 0.05, 12)}
-              >
-                <span className={styles.nowCardLabel}>{label}</span>
-                <span className={styles.nowCardValue}>{value}</span>
-              </motion.div>
+        <motion.div className={styles.section} {...sectionMotion}>
+          <p className={styles.label}>Now</p>
+          <dl className={styles.nowList}>
+            {NOW_ITEMS.map(({ label, value }) => (
+              <div key={label} className={styles.nowRow}>
+                <dt className={styles.nowCardLabel}>{label}</dt>
+                <dd className={styles.nowCardValue}>{value}</dd>
+              </div>
             ))}
-            <motion.div className={styles.resumeCard} {...fadeUp(0.2, 12)}>
-              <span className={styles.resumeCardPrompt}>Want the full picture?</span>
-              <a
-                href="/resume"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.resumeLink}
-              >
-                View Resume
-              </a>
-            </motion.div>
+          </dl>
+          <div className={styles.resumeRow}>
+            <span className={styles.resumeCardPrompt}>
+              Want the full picture?
+            </span>
+            <a
+              href="/resume"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.resumeLink}
+            >
+              View Resume
+            </a>
           </div>
-        </div>
+        </motion.div>
 
-        <div className={`${styles.section} ${styles.skillsSection}`}>
-          <motion.p className={styles.label} {...fadeUp(0)}>Skills</motion.p>
+        <motion.div
+          className={`${styles.section} ${styles.skillsSection}`}
+          {...sectionMotion}
+        >
+          <p className={styles.label}>Skills</p>
           <div className={styles.skillsGrid}>
             {SKILLS.map(({ category, items }) => (
               <div key={category} className={styles.skillGroup}>
                 <p className={styles.skillCategory}>{category}</p>
-                {items.map((item) => {
-                  const delay = skillIndex * 0.03;
-                  skillIndex += 1;
-                  return (
-                    <motion.p
-                      key={item}
-                      className={styles.skillItem}
-                      initial={{ opacity: 0, x: -8 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, amount: 0.1 }}
-                      transition={{ duration: 0.3, ease: "easeOut", delay }}
-                    >
-                      {item}
-                    </motion.p>
-                  );
-                })}
+                {items.map((item) => (
+                  <p key={item} className={styles.skillItem}>
+                    {item}
+                  </p>
+                ))}
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <Footer />
