@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
-import ContactModal from "../ContactModal/ContactModal";
+import { useContact } from "../ContactModal/ContactProvider";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 import styles from "./Nav.module.css";
 
@@ -14,9 +14,10 @@ const NAV_LINKS = [
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
-  const [isContactOpen, setIsContactOpen] = useState(false);
   const [showCQ, setShowCQ] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { openContact } = useContact();
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     const onScroll = () => {
@@ -54,6 +55,20 @@ export default function Nav() {
     return () => observer.disconnect();
   }, []);
 
+  const overlayMotion = prefersReducedMotion
+    ? {
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        exit: { opacity: 0 },
+        transition: { duration: 0.01 },
+      }
+    : {
+        initial: { opacity: 0, y: -8 },
+        animate: { opacity: 1, y: 0 },
+        exit: { opacity: 0, y: -8 },
+        transition: { duration: 0.2, ease: "easeOut" as const },
+      };
+
   return (
     <>
       <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
@@ -79,7 +94,7 @@ export default function Nav() {
               <button
                 type="button"
                 className={styles.contactButton}
-                onClick={() => setIsContactOpen(true)}
+                onClick={openContact}
               >
                 Contact
               </button>
@@ -98,13 +113,7 @@ export default function Nav() {
 
       <AnimatePresence>
         {menuOpen && (
-          <motion.div
-            className={styles.overlay}
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-          >
+          <motion.div className={styles.overlay} {...overlayMotion}>
             <button
               type="button"
               className={styles.overlayClose}
@@ -129,7 +138,7 @@ export default function Nav() {
                 className={styles.overlayButton}
                 onClick={() => {
                   setMenuOpen(false);
-                  setIsContactOpen(true);
+                  openContact();
                 }}
               >
                 Contact
@@ -147,11 +156,6 @@ export default function Nav() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <ContactModal
-        isOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-      />
     </>
   );
 }
