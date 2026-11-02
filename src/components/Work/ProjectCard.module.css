@@ -1,20 +1,25 @@
 .card {
   position: relative;
   cursor: pointer;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-4);
-  transition: background 250ms ease, border-color 250ms ease;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  transition: border-color var(--duration-fast) ease;
 }
 
 .card:hover {
-  background: var(--color-bg);
-  border-color: var(--color-muted);
+  border-bottom-color: var(--color-accent);
 }
 
 .cardStatic {
   cursor: default;
+}
+
+.cardStatic:hover {
+  border-bottom-color: var(--color-border);
 }
 
 /* Alternating alignment */
@@ -42,33 +47,7 @@
   width: 100%;
   overflow: hidden;
   border-radius: var(--radius-md);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
-  transform: translateY(0);
-  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 350ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.card:hover .thumbnail {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-.chrome {
-  height: 36px;
-  background-color: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
-  display: flex;
-  align-items: center;
-  padding: 0 var(--space-3);
-  gap: 6px;
-  flex-shrink: 0;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  flex-shrink: 0;
+  border: 1px solid var(--color-border);
 }
 
 .imageArea {
@@ -140,7 +119,7 @@
 
 .arrow {
   display: inline-block;
-  transition: transform 250ms ease;
+  transition: transform 250ms var(--ease-out);
 }
 
 .card:hover .arrow {
@@ -150,14 +129,9 @@
 .number {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  color: var(--color-border);
+  color: var(--color-muted);
   letter-spacing: 0.1em;
   margin-bottom: var(--space-1);
-  transition: color 250ms ease;
-}
-
-.card:hover .number {
-  color: var(--color-muted);
 }
 
 /* Featured card — full width, horizontal layout */
@@ -221,5 +195,15 @@
 
   .featuredTitle {
     font-size: var(--text-2xl);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arrow {
+    transition: none;
+  }
+
+  .card:hover .arrow {
+    transform: none;
   }
 }
