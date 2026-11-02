@@ -1,16 +1,14 @@
 :root {
-  /* Colors */
-  --color-bg: #F2EEE8;
-  --color-text: #2C2C2A;
-  --color-accent: #C9857A;
-  --color-muted: #6B6864;
-  --color-border: #D9D5CE;
-  --color-surface: #EBE7E0;
+  /* Colors — cool ink editorial */
+  --color-bg: #EEF0F2;
+  --color-text: #1A1C1E;
+  --color-accent: #1F6F6A;
+  --color-muted: #5C6168;
+  --color-border: #D0D4D9;
+  --color-surface: #E4E7EB;
 
-  /* Typography */
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'DM Sans', system-ui, sans-serif;
-  --font-mono: 'Courier Prime', 'Courier New', monospace;
+  /* Typography faces: owned by next/font in layout.tsx
+     (--font-display, --font-body, --font-mono) */
 
   /* Spacing */
   --space-1: 4px;
@@ -46,10 +44,10 @@
 }
 
 [data-theme="dark"] {
-  --color-bg: #141412;
-  --color-text: #E8E4DC;
-  --color-accent: #D4927A;
-  --color-muted: #8A8882;
-  --color-border: #2A2A27;
-  --color-surface: #232320;
+  --color-bg: #121416;
+  --color-text: #E6E8EA;
+  --color-accent: #4A9B94;
+  --color-muted: #8B9198;
+  --color-border: #2A2E33;
+  --color-surface: #1C1F23;
 }
