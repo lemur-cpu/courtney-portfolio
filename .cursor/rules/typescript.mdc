@@ -1,0 +1,23 @@
+---
+description: TypeScript and React standards for personal Next.js projects
+globs: "*.ts,*.tsx,*.mts,*.cts"
+---
+
+# TypeScript
+
+- Strict TypeScript as configured in `tsconfig.json`. ESLint as configured in the repo.
+- Semicolons. Prefer `const` over `let`. Explicit return types on public APIs.
+- Avoid `any`. Avoid `unknown` unless a boundary forces it; narrow immediately. Prefer `readonly`. Avoid casts; fix the types instead.
+- ES modules with `import`/`export`. Match the existing App Router / `src/` layout.
+- Identifiers: camelCase. Types and React components: PascalCase. Files match the surrounding folder.
+- Small, single-purpose functions. Prefer pure functions. Handle errors with meaningful messages.
+- Comment only non-obvious intent, trade-offs, or constraints.
+- Don't append tests at the end of a random file. Put them next to the relevant suite or `*.test.ts`.
+- Don't pin copy with broad exact-string assertions or snapshots. Assert stable behavior and structure.
+- React: keep components small. Move state to the lowest level that needs it.
+- User-visible UI copy can be plain strings in these personal apps (no `nls.localize` unless the repo already uses i18n).
+
+## Learnings
+
+<!-- counter: 0 -->
+(none yet)
